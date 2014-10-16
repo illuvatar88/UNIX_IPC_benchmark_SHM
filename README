@@ -1,0 +1,43 @@
+This benchmark measures write latency and throughput for a prototype of 'n' processes performing IPC 
+writes across cores on the same co-processor using posix mmap. The following steps need to be followed to run the benchmark:
+
+  1. Copy the files unix_IPC_mmap.cpp, timer.cpp, get_vals.sh and makefile to a folder on the server.
+  
+  2. Open the makefile and update the FILE_PATH to the complete path of the folder and update default 
+     values of other parameters described in the makefile. This step is optional as parameter values
+     can also be specified while running make.
+      
+  3. To run the benchmark: 
+     -> for a single data size 
+        a)with the host as sender:
+        
+            with default values: 
+            -> make run_host
+            
+            with parameters specified:
+            -> make run_host NUM_PROCS=<number_of_processes> MSG_SIZE=<msg_size_bytes> FILE_PATH=<complete_folder_path>
+            
+        b)with the mic as sender:
+        
+            with default values: 
+            -> make run_mic MIC=<mic_name>
+            
+            with parameters specified:
+            -> make run_mic MIC=<mic_name> NUM_PROCS=<number_of_processes> MSG_SIZE=<msg_size_bytes> FILE_PATH=<complete_folder_path>
+            
+     -> for data sizes from 8 bytes upto a specified data size. Values will be written to a file "vals_raw_num_procs_target_node_rma_type" in the same folder.  
+        a)with host as sender:
+        
+            with default values: 
+            -> make getvals_host
+            
+            with parameters specified:
+            -> make getvals_host NUM_PROCS=<number_of_processes> MAX_MSG_SIZE=<msg_size_bytes> FILE_PATH=<complete_folder_path>
+            
+        b)with mic as sender:
+        
+            with default values: 
+            -> make getvals_mic MIC=<mic_name>
+            
+            with parameters specified:
+            -> make getvals_mic MIC=<mic_name> NUM_PROCS=<number_of_processes> MAX_MSG_SIZE=<msg_size_bytes> FILE_PATH=<complete_folder_path>
