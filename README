@@ -1,7 +1,7 @@
 This benchmark measures write latency and throughput for a prototype of 'n' processes performing IPC 
-writes across cores on the same co-processor using posix mmap. The following steps need to be followed to run the benchmark:
+writes across cores on the same co-processor using unix shm. The following steps need to be followed to run the benchmark:
 
-  1. Copy the files unix_IPC_mmap.cpp, timer.cpp, get_vals.sh and makefile to a folder on the server.
+  1. Copy the files unix_IPC_shm.cpp, timer.cpp, get_vals.sh and makefile to a folder on the server.
   
   2. Open the makefile and update the FILE_PATH to the complete path of the folder and update default 
      values of other parameters described in the makefile. This step is optional as parameter values
